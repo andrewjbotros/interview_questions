@@ -2,11 +2,15 @@
 
 <style>
 
-h1{
+.nav{
 	margin: 0px;
 	padding: 0px;
 	padding-bottom: 10px;
+	position:fixed;
+	background-color: white;
+	z-index:-1;
 }
+
 body{
 	width: 70%;
 	margin: 0 auto;
@@ -16,13 +20,17 @@ body{
 .result{
 	border-bottom: 1px solid black;
 	height: 40px;
-	vertical-align: middle;
 	width: 80%;
 	margin: 0 auto 20px auto;
 }
 
 .list{
 	padding-bottom: 2px;
+}
+
+.list:first-child{
+	background-color: blue;
+	font-size: 100px;
 }
 
 .question{
@@ -36,11 +44,14 @@ span{
 
 <title>Interview Questions</title>
 <head>
-	<h1 class="title">Interview Questions!?</h1>
+	<div class = "nav">
+		<h1 class="title">Interview Questions!?</h1>
+		<div class="result"></div>
+	</div>
 </head>
 
 <body>
-<div class="result"></div>
+
 
 <script>
 
@@ -121,7 +132,6 @@ function totalCombos(){
 }
 
 </script>
-
 
 <script>totalCombos();</script>
 
