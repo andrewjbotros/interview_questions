@@ -26,7 +26,7 @@ body{
 }
 
 .list{
-	padding-bottom: 2px;
+	padding-bottom: 20px;
 }
 
 .question{
@@ -111,7 +111,7 @@ function combinatorial(x,y){
 //You need to sum 250 C 0, 249 C 1, 248 C 2, .... , 125 C 125
 function printResult(i, j){
 	var list = document.createElement("div");
-	list.class = 'list';
+	list.className = 'list' + i;
 	list.innerHTML = "<strong>" + i + " choose " + j + ": </strong>" + numberWithCommas(longnumberstring(Math.round(combinatorial(i,j))).replace(".", "")) + "<br />";
     document.body.appendChild(list);
     // document.body.insertBefore(list, document.body.firstChild);
