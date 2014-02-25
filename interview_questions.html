@@ -125,7 +125,7 @@ function totalCombos(){
 	var newParagraph = document.createElement('div');
 
 	for (i = steps; i >= steps/2; i = i-1) {
-		window.setTimeout(printResult(i,j), 3000);
+		printResult(i,j);
 		total += combinatorial(i,j);
 		newParagraph.innerText = "The total number of 1 & 2 step combinations in a 250 step sequence is " + numberWithCommas(longnumberstring(total));
 		pageNode.appendChild(newParagraph);
@@ -135,10 +135,21 @@ function totalCombos(){
 		// setInterval(working(),1000);
 		// setTimeout(working(), 5000);
 	}
-
-
-
 }
+
+var i = 1;                     //  set your counter to 1
+
+function myLoop () {           //  create a loop function
+   setTimeout(function () {    //  call a 3s setTimeout when the loop is called
+      alert('hello');          //  your code here
+      i++;                     //  increment the counter
+      if (i < 10) {            //  if the counter < 10, call the loop function
+         myLoop();             //  ..  again which will trigger another
+      }                        //  ..  setTimeout()
+   }, 3000)
+}
+
+myLoop();
 
 </script>
 
