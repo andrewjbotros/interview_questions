@@ -47,8 +47,7 @@ span{
 </head>
 
 <body>
-
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script>
 
 //These two functions are used to format numbers. They are for presentation only and do not affect the results
@@ -114,17 +113,19 @@ function totalCombos(){
 	var steps = 250;
 	var total = 0;
 	var j = 0;
+	var pageNode = document.getElementsByClassName('result')[0];
+	var newParagraph = document.createElement('div');
 
 	for (i = steps; i >= steps/2; i = i-1) {
 		document.write("<div class = 'list'><strong>" + i + " choose " + j + ": </strong>" + numberWithCommas(longnumberstring(Math.round(combinatorial(i,j))).replace(".", "")) + "<br />" + "</div>");
 		total += combinatorial(i,j);
+		newParagraph.innerText = "The total number of 1 & 2 step combinations in a 250 step sequence is " + numberWithCommas(longnumberstring(total));
+		pageNode.appendChild(newParagraph);
 		j++;
 	}
 
-	var pageNode = document.getElementsByClassName('result')[0];
-	var newParagraph = document.createElement('div');
-	newParagraph.innerText = "The total number of 1 & 2 step combinations in a 250 step sequence is " + numberWithCommas(longnumberstring(total));
-	pageNode.appendChild(newParagraph);
+
+
 }
 
 </script>
