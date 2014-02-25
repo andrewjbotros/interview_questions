@@ -6,8 +6,9 @@
 	margin: 0px;
 	padding: 0px;
 	padding-bottom: 10px;
-	position:fixed;
+	margin-top: 15px;
 	background-color: white;
+	opacity: 0.95;
 	z-index:-1;
 }
 
@@ -26,11 +27,6 @@ body{
 
 .list{
 	padding-bottom: 2px;
-}
-
-.list:first-child{
-	background-color: blue;
-	font-size: 100px;
 }
 
 .question{
@@ -120,7 +116,7 @@ function totalCombos(){
 	var j = 0;
 
 	for (i = steps; i >= steps/2; i = i-1) {
-		document.write("<div class = 'list'><span class = 'bold'>" + i + " choose " + j + ": </span>" + numberWithCommas(longnumberstring(Math.round(combinatorial(i,j))).replace(".", "")) + "<br />" + "</div>");
+		document.write("<div class = 'list'><strong>" + i + " choose " + j + ": </strong>" + numberWithCommas(longnumberstring(Math.round(combinatorial(i,j))).replace(".", "")) + "<br />" + "</div>");
 		total += combinatorial(i,j);
 		j++;
 	}
