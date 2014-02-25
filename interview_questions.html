@@ -109,7 +109,7 @@ function totalCombos(){
 	var j = 0;
 
 	for (i = steps; i >= steps/2; i = i-1) {
-		document.write("<div class = 'list'><span class = 'bold'>" + i + " choose " + j + ": </span>" + longnumberstring(Math.round(combinatorial(i,j))).replace(".", "") + "<br />" + "</div>");
+		document.write("<div class = 'list'><span class = 'bold'>" + i + " choose " + j + ": </span>" + numberWithCommas(longnumberstring(Math.round(combinatorial(i,j))).replace(".", "")) + "<br />" + "</div>");
 		total += combinatorial(i,j);
 		j++;
 	}
