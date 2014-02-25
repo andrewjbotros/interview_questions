@@ -115,7 +115,12 @@ function working(){
 
 var element = document.getElementsByTagName("body")[0];
 function printResult(i, j){
-	document.getElementsByTagName("body")[0].write("<div class = 'list'><strong>" + i + " choose " + j + ": </strong>" + numberWithCommas(longnumberstring(Math.round(combinatorial(i,j))).replace(".", "")) + "<br />" + "</div>");
+
+	var div = document.getElementsByTagName("body")[0];
+    var divResult = document.createTextNode(i + " choose " + j + ": " + numberWithCommas(longnumberstring(Math.round(combinatorial(i,j))).replace(".", "")) + "\n");
+    div.appendChild(divResult);
+ //        span.appendChild(spantext);
+	// document.getElementsByTagName("body")[0].write("<div class = 'list'><strong>" + i + " choose " + j + ": </strong>" + numberWithCommas(longnumberstring(Math.round(combinatorial(i,j))).replace(".", "")) + "<br />" + "</div>");
 	// element.appendChild(i + " choose " + j + ": " + numberWithCommas(longnumberstring(Math.round(combinatorial(i,j))).replace(".", "")) + "\n");
 }
 
@@ -128,7 +133,7 @@ var j = 0;
 
 function totalCombos(){
 	setTimeout(function () {
-		// printResult(i,j);
+		printResult(i,j);
 		total += combinatorial(i,j);
 		document.getElementsByClassName('result')[0].innerText = "The total number of 1 & 2 step combinations in a 250 step sequence is \n" + numberWithCommas(longnumberstring(total));
 		i--;
