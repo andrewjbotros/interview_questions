@@ -50,7 +50,7 @@ span{
 
 <script>
 
-//These two functions are used to format numbers. They are for presentation only and do not affect the results
+//These two functions are used to format numbers. They are for presentation only and do not affect the results. These formulas came stackOverflow, and can't claim them as my own. -ajb
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
@@ -109,29 +109,17 @@ function combinatorial(x,y){
 }
 
 //You need to sum 250 C 0, 249 C 1, 248 C 2, .... , 125 C 125
-
-// var list = document.createElement("div");
-// myDiv.class = 'list';
-// myDiv.innerHTML = 'blah!<br/>';
-// document.body.appendChild(myDiv);
-
-
-var div = document.getElementsByTagName("body")[0];
 function printResult(i, j){
-    var divResult = document.createTextNode(i + " choose " + j + ": " + numberWithCommas(longnumberstring(Math.round(combinatorial(i,j))).replace(".", "")));
-    div.appendChild(divResult);
-    div.appendChild(document.createElement("br"));
- //        span.appendChild(spantext);
-	// document.getElementsByTagName("body")[0].write("<div class = 'list'><strong>" + i + " choose " + j + ": </strong>" + numberWithCommas(longnumberstring(Math.round(combinatorial(i,j))).replace(".", "")) + "<br />" + "</div>");
-	// element.appendChild(i + " choose " + j + ": " + numberWithCommas(longnumberstring(Math.round(combinatorial(i,j))).replace(".", "")) + "\n");
+	var list = document.createElement("div");
+	list.class = 'list';
+	list.innerHTML = "<div class = 'list'><strong>" + i + " choose " + j + ": </strong>" + numberWithCommas(longnumberstring(Math.round(combinatorial(i,j))).replace(".", "")) + "<br />" + "</div>";
+    document.body.appendChild(list);
 }
 
 var steps = 250;
 var i = steps;
 var total = 0;
 var j = 0;
-// var pageNode = document.getElementsByClassName('result')[0];
-// var newParagraph = document.createElement('div');
 
 function totalCombos(){
 	setTimeout(function () {
@@ -144,21 +132,10 @@ function totalCombos(){
 			totalCombos();
 		}
 	},50);
-
-	// document.getElementsByClassName('result')[0].innerText = "The total number of 1 & 2 step combinations in a 250 step sequence is " + numberWithCommas(longnumberstring(total));
-	// pageNode.appendChild(newParagraph);
 }
 
-	// 	newParagraph.innerText = "The total number of 1 & 2 step combinations in a 250 step sequence is " + numberWithCommas(longnumberstring(total));
-	// 	pageNode.appendChild(newParagraph);
-
-</script>
-
-<script>
 totalCombos();
 </script>
 
 </body>
-
-
 </html>
