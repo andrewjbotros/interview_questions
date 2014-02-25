@@ -113,8 +113,10 @@ function working(){
 	console.log("This is working!");
 }
 
+var element = document.getElementsByTagName("body")[0];
 function printResult(i, j){
-	document.getElementsByTagName("body")[0].innerHtml = "<div class = 'list'><strong>" + i + " choose " + j + ": </strong>" + numberWithCommas(longnumberstring(Math.round(combinatorial(i,j))).replace(".", "")) + "<br />" + "</div>";
+	document.getElementsByTagName("body")[0].write("<div class = 'list'><strong>" + i + " choose " + j + ": </strong>" + numberWithCommas(longnumberstring(Math.round(combinatorial(i,j))).replace(".", "")) + "<br />" + "</div>");
+	// element.appendChild(i + " choose " + j + ": " + numberWithCommas(longnumberstring(Math.round(combinatorial(i,j))).replace(".", "")) + "\n");
 }
 
 var steps = 250;
@@ -125,9 +127,8 @@ var j = 0;
 // var newParagraph = document.createElement('div');
 
 function totalCombos(){
-	// for (i = steps; i >= steps/2; i = i-1) {
 	setTimeout(function () {
-		printResult(i,j);
+		// printResult(i,j);
 		total += combinatorial(i,j);
 		document.getElementsByClassName('result')[0].innerText = "The total number of 1 & 2 step combinations in a 250 step sequence is \n" + numberWithCommas(longnumberstring(total));
 		i--;
@@ -149,20 +150,6 @@ function totalCombos(){
 		// setInterval(working(),1000);
 		// setTimeout(working(), 5000);
 	// }
-
-// var i = 1;                     //  set your counter to 1
-
-// function myLoop () {           //  create a loop function
-//    setTimeout(function () {    //  call a 3s setTimeout when the loop is called
-//       alert('hello');          //  your code here
-//       i++;                     //  increment the counter
-//       if (i < 10) {            //  if the counter < 10, call the loop function
-//          myLoop();             //  ..  again which will trigger another
-//       }                        //  ..  setTimeout()
-//    }, 1000)
-// }
-
-// myLoop();
 
 </script>
 
