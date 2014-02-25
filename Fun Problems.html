@@ -1,0 +1,131 @@
+<html>
+
+<style>
+
+h1{
+	margin: 0px;
+	padding: 0px;
+	padding-bottom: 10px;
+}
+body{
+	width: 70%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.result{
+	border-bottom: 1px solid black;
+	height: 40px;
+	vertical-align: middle;
+	width: 80%;
+	margin: 0 auto 20px auto;
+}
+
+.list{
+	padding-bottom: 2px;
+}
+
+.question{
+	border: 1px solid black;
+}
+
+span{
+	font-weight: bold;
+}
+</style>
+
+<title>Interview Questions</title>
+<head>
+	<h1 class="title">Interview Questions!?</h1>
+</head>
+
+<body>
+<div class="result"></div>
+
+<script>
+
+//These two functions are used to format numbers. They are for presentation only and do not affect the results
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function longnumberstring(n){
+    var str, str2= '', data= n.toExponential().replace('.','').split(/e/i);
+    str= data[0], mag= Number(data[1]);
+    if(mag>=0 && str.length> mag){
+        mag+=1;
+        return str.substring(0, mag)+'.'+str.substring(mag);
+    }
+    if(mag<0){
+        while(++mag) str2+= '0';
+        return '0.'+str2+str;
+    }
+    mag= (mag-str.length)+1;
+    while(mag> str2.length){
+        str2+= '0';
+    }
+    return str+str2;
+}
+</script>
+
+<script>
+
+//We want to create function that produces the result X Choose Y. This will serve as the basis for computing the total 1&2 step combinations in a 250 step sequence.
+//Recall that X choose Y (written as X C Y) is X! / (Y)! (X-Y)!
+
+//We have to structure the combinatorial function in a particular way, because we are unable to compute Y! for sufficiently large Y (> 171).
+//We will break this problem into two parts. We'll create a function for (Y)! and X!/(X-Y)! for all X >= Y, then combine them to complete the combinatorial function.
+
+//Y!
+function factorial(y){
+	var result = 1;
+	if (y == 0)
+		{return 1}
+	else {
+		for (count = 1; count <= y; count++) {
+			result = result * count;
+		}
+		return result;
+	}
+}
+
+//X!/(X-Y)! for all X >= Y.
+function combination(x,y){
+	var result = 1;
+	for (count = 0; count < y; count++) {
+		result = result * (x - count);
+	}
+	return result;
+}
+
+function combinatorial(x,y){
+	return combination(x,y)/factorial(y);
+}
+
+//You need to sum 250 C 0, 249 C 1, 248 C 2, .... , 125 C 125
+function totalCombos(){
+	var steps = 250;
+	var total = 0;
+	var j = 0;
+
+	for (i = steps; i >= steps/2; i = i-1) {
+		document.write("<div class = 'list'><span class = 'bold'>" + i + " choose " + j + ": </span>" + longnumberstring(Math.round(combinatorial(i,j))).replace(".", "") + "<br />" + "</div>");
+		total += combinatorial(i,j);
+		j++;
+	}
+
+	var pageNode = document.getElementsByClassName('result')[0];
+	var newParagraph = document.createElement('div');
+	newParagraph.innerText = "The total number of 1 & 2 step combinations in a 250 step sequence is " + numberWithCommas(longnumberstring(total));
+	pageNode.appendChild(newParagraph);
+}
+
+</script>
+
+
+<script>totalCombos();</script>
+
+</body>
+
+
+</html>
