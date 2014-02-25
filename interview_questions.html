@@ -112,8 +112,9 @@ function combinatorial(x,y){
 function printResult(i, j){
 	var list = document.createElement("div");
 	list.class = 'list';
-	list.innerHTML = "<div class = 'list'><strong>" + i + " choose " + j + ": </strong>" + numberWithCommas(longnumberstring(Math.round(combinatorial(i,j))).replace(".", "")) + "<br />" + "</div>";
+	list.innerHTML = "<strong>" + i + " choose " + j + ": </strong>" + numberWithCommas(longnumberstring(Math.round(combinatorial(i,j))).replace(".", "")) + "<br />";
     document.body.appendChild(list);
+    // document.body.insertBefore(list, document.body.firstChild);
 }
 
 var steps = 250;
